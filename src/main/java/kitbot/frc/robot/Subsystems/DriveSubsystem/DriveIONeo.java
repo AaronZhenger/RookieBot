@@ -39,7 +39,7 @@ public class DriveIONeo implements DriveIO {
             .positionConversionFactor(DriveConstants.kPositionConversionFactor)
             .velocityConversionFactor(DriveConstants.kPositionConversionFactor/60);
         driveConfig.closedLoop
-            .pid(DriveConstants.kP, DriveConstants.kP, DriveConstants.kP)
+            .pid(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD)
             .maxMotion
                 .maxVelocity(DriveConstants.kV)
                 .maxAcceleration(DriveConstants.kA);
@@ -51,10 +51,12 @@ public class DriveIONeo implements DriveIO {
             .positionConversionFactor(DriveConstants.kPositionConversionFactor)
             .velocityConversionFactor(DriveConstants.kPositionConversionFactor/60);
         driveConfigInverted.closedLoop
-            .pid(DriveConstants.kP, DriveConstants.kP, DriveConstants.kP)
+            .pid(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD)
             .maxMotion
                 .maxVelocity(DriveConstants.kV)
                 .maxAcceleration(DriveConstants.kA);
+        
+        //         driveConfig.closedLoop.outputRange(getGyroRotation(), getGyroRotation())
 
         left1.configure(driveConfigInverted, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         right1.configure(driveConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -74,12 +76,16 @@ public class DriveIONeo implements DriveIO {
     public void setLeft(LinearVelocity mps) {
         left1Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
         left2Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
+        // left1.set(0.1*mps.in(MetersPerSecond));
+        // left2.set(0.1*mps.in(MetersPerSecond));
     }
 
     @Override
     public void setRight(LinearVelocity mps) {
         right1Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
         right2Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
+        // right1.set(0.1*mps.in(MetersPerSecond));
+        // right2.set(0.1*mps.in(MetersPerSecond));
     }
     
     public double getGyroRotation() {

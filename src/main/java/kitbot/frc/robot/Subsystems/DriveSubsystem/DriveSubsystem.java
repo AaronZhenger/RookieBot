@@ -21,12 +21,14 @@ public class DriveSubsystem extends SubsystemBase {
 
     private ChassisSpeeds currentSpeeds;
 
-    private SlewRateLimiter filter;
+    private SlewRateLimiter leftFilter;
+    private SlewRateLimiter rightFilter;
 
     private DifferentialDrivePoseEstimator pose;
 
     public DriveSubsystem() {
-        filter = new SlewRateLimiter(4.5);
+        leftFilter = new SlewRateLimiter(4.5);
+        rightFilter = new SlewRateLimiter(4.5);
         io = new DriveIONeo();
         inputs = new DriveIOInputsAutoLogged();
         pose = new DifferentialDrivePoseEstimator(DriveConstants.m_kinematics, Rotation2d.fromDegrees(io.getGyroRotation()), 
@@ -39,8 +41,8 @@ public class DriveSubsystem extends SubsystemBase {
         io.updateInputs(inputs);
         DifferentialDriveWheelSpeeds wheelSpeeds = DriveConstants.m_kinematics.toWheelSpeeds(currentSpeeds);
 
-        io.setLeft(LinearVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.leftMetersPerSecond), MetersPerSecond));
-        io.setRight(LinearVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.rightMetersPerSecond), MetersPerSecond));
+        io.setLeft(LinearVelocity.ofBaseUnits(leftFilter.calculate(wheelSpeeds.leftMetersPerSecond), MetersPerSecond));
+        io.setRight(LinearVelocity.ofBaseUnits(rightFilter.calculate(wheelSpeeds.rightMetersPerSecond), MetersPerSecond));
 
         Logger.processInputs("Inputs: Drivetrain", inputs);
         Logger.recordOutput("Left Output", wheelSpeeds.leftMetersPerSecond);
@@ -57,7 +59,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public Pose2d getPose() {
-        return pose.getEstimatedPosition();
+        return pose.getEstimatedPosition();//
     }
 
     public void resetPose(Pose2d pose) {
