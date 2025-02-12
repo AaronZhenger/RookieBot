@@ -20,8 +20,8 @@ public class DriveCommand extends Command {
 
     @Override
     public void execute() {
-        double yValue = Math.abs(joy.getLeftY())<0.3?0.0:joy.getLeftY();
-        double rotation = Math.abs(joy.getRightX())<0.3?0.0:joy.getRightX();
+        double yValue = Math.abs(joy.getLeftY())<0.15?0.0:joy.getLeftY();
+        double rotation = Math.abs(joy.getRightX())<0.15?0.0:joy.getRightX();
 
 
         drive.setCurrentSpeeds(new ChassisSpeeds(
