@@ -1,7 +1,6 @@
 package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
 import static edu.wpi.first.units.Units.MetersPerSecond;
-import static edu.wpi.first.units.Units.RPM;
 
 import org.littletonrobotics.junction.Logger;
 
@@ -11,7 +10,6 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
-import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -44,8 +42,6 @@ public class DriveSubsystem extends SubsystemBase {
         io.setLeft(LinearVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.leftMetersPerSecond), MetersPerSecond));
         io.setRight(LinearVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.rightMetersPerSecond), MetersPerSecond));
 
-        // io.setLeft(AngularVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.leftMetersPerSecond/DriveConstants.kPositionConversionFactor), RPM));
-        // io.setRight(AngularVelocity.ofBaseUnits(filter.calculate(wheelSpeeds.rightMetersPerSecond/DriveConstants.kPositionConversionFactor), RPM));
         Logger.processInputs("Inputs: Drivetrain", inputs);
         Logger.recordOutput("Left Output", wheelSpeeds.leftMetersPerSecond);
         Logger.recordOutput("Right Output", wheelSpeeds.rightMetersPerSecond);

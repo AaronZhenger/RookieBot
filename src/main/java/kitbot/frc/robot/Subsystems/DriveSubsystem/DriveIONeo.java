@@ -2,6 +2,7 @@ package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
 import static edu.wpi.first.units.Units.MetersPerSecond;
 
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -19,6 +20,11 @@ public class DriveIONeo implements DriveIO {
     private SparkMax left2 = new SparkMax(DriveConstants.kLeftBackID.getDeviceNumber(), MotorType.kBrushless);
     private SparkMax right1 = new SparkMax(DriveConstants.kRightFrontID.getDeviceNumber(), MotorType.kBrushless);
     private SparkMax right2 = new SparkMax(DriveConstants.kRightBackID.getDeviceNumber(), MotorType.kBrushless);
+    private SparkClosedLoopController left1Controller = left1.getClosedLoopController();
+    private SparkClosedLoopController left2Controller = left2.getClosedLoopController();
+    private SparkClosedLoopController right1Controller = right1.getClosedLoopController();
+    private SparkClosedLoopController right2Controller = right2.getClosedLoopController();
+
     private SparkMaxConfig driveConfig = new SparkMaxConfig();
     private SparkMaxConfig driveConfigInverted = new SparkMaxConfig();
 
@@ -65,15 +71,15 @@ public class DriveIONeo implements DriveIO {
     }
 
     @Override
-    public void setLeft(LinearVelocity rpm) {
-        left1.getClosedLoopController().setReference(rpm.abs(MetersPerSecond), ControlType.kVelocity);
-        left2.getClosedLoopController().setReference(rpm.abs(MetersPerSecond), ControlType.kVelocity);
+    public void setLeft(LinearVelocity mps) {
+        left1Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
+        left2Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
     }
 
     @Override
-    public void setRight(LinearVelocity rpm) {
-        right1.getClosedLoopController().setReference(rpm.abs(MetersPerSecond), ControlType.kVelocity);
-        right2.getClosedLoopController().setReference(rpm.abs(MetersPerSecond), ControlType.kVelocity);
+    public void setRight(LinearVelocity mps) {
+        right1Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
+        right2Controller.setReference(mps.in(MetersPerSecond), ControlType.kVelocity);
     }
     
     public double getGyroRotation() {

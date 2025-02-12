@@ -25,7 +25,7 @@ public class DriveCommand extends Command {
 
 
         drive.setCurrentSpeeds(new ChassisSpeeds(
-            yValue * DriveConstants.kTargetMperS,
+            yValue * DriveConstants.kMaxMPS,
             0,
             rotation * Math.PI * 2.5
         ));
