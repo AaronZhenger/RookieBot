@@ -23,11 +23,12 @@ public class DriveCommand extends Command {
         double yValue = Math.abs(joy.getLeftY())<0.15?0.0:joy.getLeftY();
         double rotation = Math.abs(joy.getRightX())<0.15?0.0:joy.getRightX();
 
+        double precision = 1-(0.8*joy.getLeftTriggerAxis());
 
         drive.setCurrentSpeeds(new ChassisSpeeds(
-            yValue * DriveConstants.kMaxMPS,
+            yValue * DriveConstants.kV*precision,
             0,
-            rotation * Math.PI * 2.5
+            rotation * Math.PI * 2.7 * precision
         ));
     }
 }

@@ -5,6 +5,7 @@ import static edu.wpi.first.units.Units.RPM;
 import com.ctre.phoenix6.hardware.Pigeon2;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.LinearVelocity;
 import kitbot.frc.robot.Constants.DriveConstants;
@@ -51,8 +52,8 @@ public class DriveIOTalon implements DriveIO {
 
 
     
-    public double getGyroRotation() {
-        return gyro.getYaw().getValueAsDouble();
+    public Angle getGyroRotation() {
+        return gyro.getYaw().getValue();
     }
 
     @Override

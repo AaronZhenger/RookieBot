@@ -1,5 +1,6 @@
 package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
+import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 
 import org.littletonrobotics.junction.Logger;
@@ -31,7 +32,8 @@ public class DriveSubsystem extends SubsystemBase {
         rightFilter = new SlewRateLimiter(4.5);
         io = new DriveIONeo();
         inputs = new DriveIOInputsAutoLogged();
-        pose = new DifferentialDrivePoseEstimator(DriveConstants.m_kinematics, Rotation2d.fromDegrees(io.getGyroRotation()), 
+        pose = new DifferentialDrivePoseEstimator(DriveConstants.m_kinematics, 
+            Rotation2d.fromDegrees(io.getGyroRotation().in(Degrees)), 
             inputs.leftDistanceTravelled, inputs.rightDistanceTravelled, new Pose2d(0, 0, new Rotation2d()));
         currentSpeeds = new ChassisSpeeds();
     }

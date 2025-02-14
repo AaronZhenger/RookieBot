@@ -2,6 +2,7 @@ package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
 import org.littletonrobotics.junction.AutoLog;
 
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.LinearVelocity;
 
 public interface DriveIO {
@@ -19,5 +20,5 @@ public interface DriveIO {
     
     public void setRight(LinearVelocity rpm);   
 
-    public double getGyroRotation();
+    public Angle getGyroRotation();
 }

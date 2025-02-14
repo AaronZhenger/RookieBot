@@ -31,12 +31,12 @@ public class Constants {
         public static final double kP = 0.4;
         public static final double kI = 0.0;
         public static final double kD = 0.0;
-        public static final double kV = 1.52;
-        public static final double kA = 0.61;
 
         public static final double kPositionConversionFactor = Math.PI*kWheelDiameter*kDriveGearRatio;
+        public static final double kV = 5676*kPositionConversionFactor/60;
+        public static final double kA = kV/2.0;
 
-        public static final double kMaxMPS = 3.0;
+        public static final double kMaxMPS = 5.0;
 
         public static final DifferentialDriveKinematics m_kinematics = 
             new DifferentialDriveKinematics(Units.inchesToMeters(21.5));

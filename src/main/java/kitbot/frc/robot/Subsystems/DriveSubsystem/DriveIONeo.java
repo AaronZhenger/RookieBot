@@ -1,9 +1,14 @@
 package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
+import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
+import com.ctre.phoenix6.configs.MountPoseConfigs;
+import com.ctre.phoenix6.configs.Pigeon2Configuration;
+import com.ctre.phoenix6.configs.Pigeon2FeaturesConfigs;
+import com.ctre.phoenix6.hardware.Pigeon2;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -11,6 +16,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.LinearVelocity;
 import kitbot.frc.robot.Constants.DriveConstants;
 
@@ -28,9 +34,10 @@ public class DriveIONeo implements DriveIO {
     private SparkMaxConfig driveConfig = new SparkMaxConfig();
     private SparkMaxConfig driveConfigInverted = new SparkMaxConfig();
 
-    //private Pigeon2 gyro = new Pigeon2(DriveConstants.kPigeonID);
+    //private Pigeon2 gyro;
 
     public DriveIONeo() {
+        //gyro = new Pigeon2(DriveConstants.kPigeonID);
         driveConfig
             .idleMode(IdleMode.kCoast)
             .inverted(false)
@@ -88,8 +95,8 @@ public class DriveIONeo implements DriveIO {
         // right2.set(0.1*mps.in(MetersPerSecond));
     }
     
-    public double getGyroRotation() {
-        return 0;
-        //return gyro.getYaw().getValueAsDouble();
+    public Angle getGyroRotation() {
+        return Angle.ofBaseUnits(0, Degrees);
+        //return gyro.getYaw().getValue();
     }
 }
