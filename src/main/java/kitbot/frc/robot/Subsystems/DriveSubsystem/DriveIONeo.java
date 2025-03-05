@@ -48,8 +48,8 @@ public class DriveIONeo implements DriveIO {
         driveConfig.closedLoop
             .pid(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD)
             .maxMotion
-                .maxVelocity(DriveConstants.kV)
-                .maxAcceleration(DriveConstants.kA);
+                .maxVelocity(DriveConstants.kMaxVelocity)
+                .maxAcceleration(DriveConstants.kMaxAcceleration);
         driveConfigInverted
             .idleMode(IdleMode.kCoast)
             .inverted(true)
@@ -60,8 +60,8 @@ public class DriveIONeo implements DriveIO {
         driveConfigInverted.closedLoop
             .pid(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD)
             .maxMotion
-                .maxVelocity(DriveConstants.kV)
-                .maxAcceleration(DriveConstants.kA);
+                .maxVelocity(DriveConstants.kMaxVelocity)
+                .maxAcceleration(DriveConstants.kMaxAcceleration);
         
         //         driveConfig.closedLoop.outputRange(getGyroRotation(), getGyroRotation())
 

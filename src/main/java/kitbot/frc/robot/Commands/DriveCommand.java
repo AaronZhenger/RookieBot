@@ -26,7 +26,7 @@ public class DriveCommand extends Command {
         double precision = 1-(0.8*joy.getLeftTriggerAxis());
 
         drive.setCurrentSpeeds(new ChassisSpeeds(
-            yValue * DriveConstants.kV*precision,
+            yValue * DriveConstants.kMaxVelocity*precision,
             0,
             rotation * Math.PI * 2.7 * precision
         ));

@@ -35,8 +35,8 @@ public class DriveIOTalon implements DriveIO {
         driveConfig.kP = DriveConstants.kP;
         driveConfig.kI = DriveConstants.kI;
         driveConfig.kD = DriveConstants.kD;
-        driveConfig.kV = DriveConstants.kV;
-        driveConfig.kA = DriveConstants.kA;
+        driveConfig.kV = DriveConstants.kMaxVelocity;
+        driveConfig.kA = DriveConstants.kMaxAcceleration;
 
         left.apply(driveConfig);
         right.apply(driveConfig);

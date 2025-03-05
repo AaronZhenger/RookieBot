@@ -31,12 +31,12 @@ public class Constants {
         public static final double kP = 0.4;
         public static final double kI = 0.0;
         public static final double kD = 0.0;
+        public static final double kV = 1.52;
+        public static final double kA = 0.61;
 
         public static final double kPositionConversionFactor = Math.PI*kWheelDiameter*kDriveGearRatio;
-        public static final double kV = 5676*kPositionConversionFactor/60;
-        public static final double kA = kV/2.0;
-
-        public static final double kMaxMPS = 5.0;
+        public static final double kMaxVelocity = 5676*kPositionConversionFactor/60;
+        public static final double kMaxAcceleration = kMaxVelocity/2.0;
 
         public static final DifferentialDriveKinematics m_kinematics = 
             new DifferentialDriveKinematics(Units.inchesToMeters(21.5));
@@ -58,6 +58,18 @@ public class Constants {
         public static final double kWheelDiameter = Units.inchesToMeters(4);
 
         public static final double kTargetRPM = 3*60;
+    }
+    public class AlgaeConstants {
+        public static final int kPivotID = 9;
+        public static final int kFlywheelID = 10;
+        
+        public static final double kPivotGearRatio = 1.0/72.0;
+
+        public static final double kPivotPositionConversionFactor = Math.PI*kPivotGearRatio*2.0;
+
+        public static final double kPivotP = 0.3;
+        public static final double kPivotI = 0.0;
+        public static final double kPivotD = 0.0;
     }
     public class AutoConstants {
 

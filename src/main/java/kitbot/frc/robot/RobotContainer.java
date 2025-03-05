@@ -17,9 +17,11 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import kitbot.frc.robot.Commands.AlgaeCommand;
 import kitbot.frc.robot.Commands.DriveCommand;
 import kitbot.frc.robot.Commands.FlywheelCommand;
 import kitbot.frc.robot.Constants.OperatorConstants;
+import kitbot.frc.robot.Subsystems.AlgaeSubsystem.AlgaeSubsystem;
 import kitbot.frc.robot.Subsystems.DriveSubsystem.DriveSubsystem;
 import kitbot.frc.robot.Subsystems.FlywheelsSubsystem.FlywheelsSubsystem;
 
@@ -27,6 +29,7 @@ public class RobotContainer {
   private XboxController joy = new XboxController(OperatorConstants.kJoyPort);
   private static DriveSubsystem driveSubsystem = new DriveSubsystem();
   private static FlywheelsSubsystem outtake = new FlywheelsSubsystem();
+  private static AlgaeSubsystem algae = new AlgaeSubsystem();
     
       public RobotContainer() {
         RobotConfig config = new RobotConfig(36.287, 3, 
@@ -63,6 +66,7 @@ public class RobotContainer {
       private void configureBindings() {
         driveSubsystem.setDefaultCommand(new DriveCommand(joy));
         outtake.setDefaultCommand(new FlywheelCommand(joy));
+        algae.setDefaultCommand(new AlgaeCommand(joy));
       }
     
       public Command getAutonomousCommand() {
@@ -71,9 +75,13 @@ public class RobotContainer {
     
       public static DriveSubsystem getDriveSubsystem() {
           return driveSubsystem;
-    }
+      }
   
-    public static FlywheelsSubsystem getOuttake() {
-        return outtake;
-  }
+      public static FlywheelsSubsystem getOuttake() {
+          return outtake;
+      }
+
+      public static AlgaeSubsystem getAlgae() {
+          return algae;
+      }
 }
