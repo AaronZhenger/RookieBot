@@ -1,0 +1,8 @@
+Standardized Differential Movement
+
+LEFT_BUMPER - Precision
+RIGHT_BUMPER - Output Coral
+LEFT_TRIGGER - Intake Algae
+RIGHT_TRIGGER - Output Algae
+
+BUTTON_A - Toggle Algae Arm

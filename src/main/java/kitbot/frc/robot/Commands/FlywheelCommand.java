@@ -18,6 +18,7 @@ public class FlywheelCommand extends Command {
 
     @Override
     public void execute() {
-        flywheels.setRpm(joy.getRightTriggerAxis());
+        double rpm = joy.getRightBumperButton() ? 0.7 : 0;
+        flywheels.setRpm(rpm);
     }
 }

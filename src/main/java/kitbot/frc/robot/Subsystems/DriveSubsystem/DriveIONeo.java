@@ -5,10 +5,10 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
-import com.ctre.phoenix6.configs.MountPoseConfigs;
-import com.ctre.phoenix6.configs.Pigeon2Configuration;
-import com.ctre.phoenix6.configs.Pigeon2FeaturesConfigs;
-import com.ctre.phoenix6.hardware.Pigeon2;
+// import com.ctre.phoenix6.configs.MountPoseConfigs;
+// import com.ctre.phoenix6.configs.Pigeon2Configuration;
+// import com.ctre.phoenix6.configs.Pigeon2FeaturesConfigs;
+// import com.ctre.phoenix6.hardware.Pigeon2;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;

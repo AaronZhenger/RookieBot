@@ -16,9 +16,8 @@ public class AlgaeCommand extends Command{
 
     @Override
     public void execute() {
-        double angle = joy.getRightBumperButton() ? -1.4 : 0;
+        double angle = joy.getRightBumperButton() ? -1.2 : 0;
         algae.setAngle(angle);
-        double negative = joy.getLeftBumperButton() ? -1 : 1;
-        algae.setSpeed(negative*0.2*joy.getLeftTriggerAxis());
+        algae.setSpeed(0.2*(joy.getRightTriggerAxis()-joy.getLeftTriggerAxis()));
     }
 }

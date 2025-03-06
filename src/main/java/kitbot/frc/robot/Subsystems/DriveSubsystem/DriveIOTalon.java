@@ -1,12 +1,9 @@
 package kitbot.frc.robot.Subsystems.DriveSubsystem;
 
-import static edu.wpi.first.units.Units.RPM;
-
 import com.ctre.phoenix6.hardware.Pigeon2;
 
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Angle;
-import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.LinearVelocity;
 import kitbot.frc.robot.Constants.DriveConstants;
 import kitbot.lib.drivers.ComplexGearRatio;
@@ -58,13 +55,9 @@ public class DriveIOTalon implements DriveIO {
 
     @Override
     public void setLeft(LinearVelocity rpm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setLeft'");
     }
 
     @Override
     public void setRight(LinearVelocity rpm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setRight'");
     }
 }

@@ -67,7 +67,7 @@ public class Constants {
 
         public static final double kPivotPositionConversionFactor = Math.PI*kPivotGearRatio*2.0;
 
-        public static final double kPivotP = 0.3;
+        public static final double kPivotP = 0.4;
         public static final double kPivotI = 0.0;
         public static final double kPivotD = 0.0;
     }
