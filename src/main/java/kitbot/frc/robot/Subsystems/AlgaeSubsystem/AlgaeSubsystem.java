@@ -19,7 +19,7 @@ public class AlgaeSubsystem extends SubsystemBase{
 
     @Override
     public void periodic() {
-        algaeIO.setPivotAngle(Angle.ofBaseUnits(angle, Rotations));
+        algaeIO.setPivotAngle(angle);
         algaeIO.setFlywheelVelocity(speed);
     }
 

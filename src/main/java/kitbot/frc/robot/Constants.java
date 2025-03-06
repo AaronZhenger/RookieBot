@@ -22,7 +22,7 @@ public class Constants {
         public static final CANDeviceId kLeftFrontID = new CANDeviceId(3);
         public static final CANDeviceId kRightFrontID = new CANDeviceId(6);
         public static final CANDeviceId kLeftBackID = new CANDeviceId(4);
-        public static final CANDeviceId kRightBackID = new CANDeviceId(11);
+        public static final CANDeviceId kRightBackID = new CANDeviceId(5);
         public static final int kPigeonID = 0;
 
         public static final double kDriveGearRatio = 1.0/8.45;

@@ -4,6 +4,8 @@ import static edu.wpi.first.units.Units.Rotations;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
@@ -31,10 +33,11 @@ public class AlgaeIO {
             .maxMotion
                 .maxVelocity(5676*AlgaeConstants.kPivotPositionConversionFactor)
                 .maxAcceleration(5676*AlgaeConstants.kPivotPositionConversionFactor/2);
+        pivot.configure(pivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
 
-    public void setPivotAngle(Angle angle) {
-        pivot.getClosedLoopController().setReference(angle.in(Rotations), ControlType.kPosition);
+    public void setPivotAngle(double angle) {
+        pivot.getClosedLoopController().setReference(angle, ControlType.kPosition);
     }
 
     public void setFlywheelVelocity(double speed) {
