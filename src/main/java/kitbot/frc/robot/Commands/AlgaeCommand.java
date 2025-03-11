@@ -8,6 +8,7 @@ import kitbot.frc.robot.Subsystems.AlgaeSubsystem.AlgaeSubsystem;
 public class AlgaeCommand extends Command{
     private AlgaeSubsystem algae = RobotContainer.getAlgae();
     private XboxController joy;
+    private double angle = 0.0;
 
     public AlgaeCommand(XboxController joy) {
         this.joy = joy;
@@ -16,8 +17,14 @@ public class AlgaeCommand extends Command{
 
     @Override
     public void execute() {
-        double angle = joy.getRightBumperButton() ? -1.2 : 0;
+        if (angle==0.0)
+            angle = 0.2;
+        if (joy.getAButtonPressed()) {
+            if (angle==0.2)
+                angle = -1;
+            else angle = 0.2;
+        }
         algae.setAngle(angle);
-        algae.setSpeed(0.2*(joy.getRightTriggerAxis()-joy.getLeftTriggerAxis()));
+        algae.setSpeed(0.2*(joy.getLeftTriggerAxis()-joy.getRightTriggerAxis()));
     }
 }

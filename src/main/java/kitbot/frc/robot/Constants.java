@@ -28,7 +28,7 @@ public class Constants {
         public static final double kDriveGearRatio = 1.0/8.45;
         public static final double kWheelDiameter = 0.1524; //0.1524
 
-        public static final double kP = 0.4;
+        public static final double kP = 0.35;
         public static final double kI = 0.0;
         public static final double kD = 0.0;
         public static final double kV = 1.52;
@@ -36,7 +36,7 @@ public class Constants {
 
         public static final double kPositionConversionFactor = Math.PI*kWheelDiameter*kDriveGearRatio;
         public static final double kMaxVelocity = 5676*kPositionConversionFactor/60;
-        public static final double kMaxAcceleration = kMaxVelocity/2.0;
+        public static final double kMaxAcceleration = kMaxVelocity/1.8;
 
         public static final DifferentialDriveKinematics m_kinematics = 
             new DifferentialDriveKinematics(Units.inchesToMeters(21.5));
