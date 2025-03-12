@@ -13,6 +13,7 @@ public class DriveCommand extends Command {
 
     private DriveSubsystem drive = RobotContainer.getDriveSubsystem();
 
+    private int invertControls = 1;
     public DriveCommand(XboxController joy) {
         this.joy = joy;
         addRequirements(drive);
@@ -25,8 +26,10 @@ public class DriveCommand extends Command {
 
         double precision = joy.getLeftBumperButton() ? 0.3 : 1;
 
+        if (joy.getXButtonPressed()) invertControls *= -1;
+
         drive.setCurrentSpeeds(new ChassisSpeeds(
-            yValue * DriveConstants.kMaxVelocity*precision,
+            invertControls * yValue * DriveConstants.kMaxVelocity*precision,
             0,
             rotation * Math.PI * 2.7 * precision
         ));

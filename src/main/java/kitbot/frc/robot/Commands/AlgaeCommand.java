@@ -25,6 +25,6 @@ public class AlgaeCommand extends Command{
             else angle = 0.2;
         }
         algae.setAngle(angle);
-        algae.setSpeed(0.2*(joy.getLeftTriggerAxis()-joy.getRightTriggerAxis()));
+        algae.setSpeed(0.3*(joy.getLeftTriggerAxis()-joy.getRightTriggerAxis()));
     }
 }
