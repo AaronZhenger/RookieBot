@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import kitbot.frc.robot.Commands.AlgaeCommand;
+import kitbot.frc.robot.Commands.Auto;
 import kitbot.frc.robot.Commands.DriveCommand;
 import kitbot.frc.robot.Commands.FlywheelCommand;
 import kitbot.frc.robot.Constants.OperatorConstants;
@@ -70,7 +71,7 @@ public class RobotContainer {
       }
     
       public Command getAutonomousCommand() {
-        return null;
+        return new Auto();
       }
     
       public static DriveSubsystem getDriveSubsystem() {
